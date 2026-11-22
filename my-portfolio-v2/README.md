@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# Gokula Kumaran — 3D Interactive Developer Portfolio (`my-portfolio-v2`)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Vite + React 19 + TypeScript + Three.js (`@react-three/fiber`) application powering Portfolio v2.0.**
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features & Architecture
 
-## React Compiler
+- **Custom GLSL Shader Backdrop (`src/three/Background.tsx`)**: Time-uniform (`uTime`) driven fragment shader blending deep cosmic navy and gold wave glow with radial vignette attenuation.
+- **3D BufferGeometry Particle Field (`src/three/Particles.tsx`)**: 2,000 depth-attenuated 3D particles rotating continuously across X and Y axes inside the React Three Fiber `<Canvas>`.
+- **Expandable Dual-Category Project Deck (`src/sections/Projects.tsx`)**: Interactive card switcher for **Games** and **Codes** with a slide-over **`DetailPanel`** supporting `.mp4` gameplay previews and `.zip` downloads.
+- **Zustand Layout Store & Custom Cursor**: Lightweight global state in `src/store/layoutStore.ts` paired with a custom pointer tracker (`src/components/Cursor.tsx`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Framework**: React 19, TypeScript ~5.9, Vite 7
+- **3D Engine**: Three.js, `@react-three/fiber`, `@react-three/drei`, `@react-three/postprocessing`
+- **Motion & UI**: GSAP, Framer Motion, Lenis Smooth Scroll, Tailwind CSS
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Scripts
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
+# Install dependencies
+npm install
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# Run development server
+npm run dev
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Build for production
+npm run build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Preview production bundle
+npm run preview
 ```
